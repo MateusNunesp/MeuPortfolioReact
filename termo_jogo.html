@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termo</title>
+    <style>
+        input{
+    width: 40px;
+    height: 40px;
+    font-size: 35px;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 8%;
+    border: 4px solid gray;
+    margin-bottom: 2px;
+    margin-right: 2px;
+    color: white;
+}
+
+#palavras{
+    display: flex;
+    width: 280px;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin:auto;
+}
+
+#letras{
+    justify-content: center;
+    margin:auto;
+    width: 700px;
+    margin-top: 30px;
+}
+
+h1{
+    text-align: center;
+    color: white;
+}
+
+body{
+    font-family: sans-serif;
+    background-color: burlywood;
+
+}
+
+button{
+    width: 60px;
+    height: 60px;
+    font-size: 25px;
+    margin: 2px;
+    background-color: gray;
+    color: white;
+    border-radius: 8%;
+    border:none; 
+    font-weight: 900px;
+}
+.prr{
+    width: 100px;
+}
+    </style>
+</head>
+<body>
+    <h1>TERMO</h1>
+    <section id="palavras">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+        <input maxlength='1' type="text">
+    </section>
+    <label id="lbl"></label>
+    <section id="letras">
+        <button>A</button>
+        <button>B</button>
+        <button>C</button>
+        <button>D</button>
+        <button>E</button>
+        <button>F</button>
+        <button>G</button>
+        <button>H</button>
+        <button>I</button>
+        <button>J</button>
+        <button>K</button>
+        <button>L</button>
+        <button>M</button>
+        <button>N</button>
+        <button>O</button>
+        <button>P</button>
+        <button>Q</button>
+        <button>R</button>
+        <button>S</button>
+        <button>T</button>
+        <button>U</button>
+        <button>V</button>
+        <button>W</button>
+        <button>X</button>
+        <button>Y</button>
+        <button>Z</button>
+        <button class="prr">Apagar</button>
+        <button class="prr">Enter</button>
+    </section>
+    
+    <script>
+        const botoes = document.querySelectorAll('#letras button');
+        const inputs = document.querySelectorAll('#palavras input');
+        let posicaoAtual = 0;
+        let tentativaAtual = 0;
+        const palavra = "JESUS";
+        let ganhou = 0;
+        
+        
+        function enter() {
+        const inputs = document.querySelectorAll('input');
+        for (let i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener("keydown", (e) => {
+      if (e.key === 'Enter') {
+        if ((posicaoAtual - tentativaAtual * 5) === 5) {
+                        let tentativa = '';
+                        for (let i = 0; i < 5; i++) {
+                            const index = tentativaAtual * 5 + i;
+                            tentativa += inputs[index].value.toUpperCase();
+                        }
+    
+                        for (let i = 0; i < 5; i++) {
+                            const index = tentativaAtual * 5 + i;
+                            const letraTentativa = tentativa[i];
+                            const letraCorreta = palavra[i];
+    
+                            if (letraTentativa === letraCorreta) {
+                                inputs[index].style.backgroundColor = 'green';
+                            } else if (palavra.includes(letraTentativa)) {
+                                inputs[index].style.backgroundColor = 'orange';
+                            } else {
+                                inputs[index].style.backgroundColor = 'dimgray';
+                            }
+                        }
+    
+                        if (tentativa === palavra) {
+                            ganhou = 1;
+                            
+                            document.body.style.backgroundColor = '#72716d';
+                            if(tentativaAtual === 0){
+                                setTimeout(() => {
+                                alert("DE PRIMEIRA!\nParabéns! Você acertou a palavra!");
+                            }, 100);
+                            }
+                            if(tentativaAtual === 1){
+                                setTimeout(() => {
+                                alert("ISSO AI!\nParabéns! Você acertou a palavra!");
+                            }, 100);
+                            }
+                            if(tentativaAtual === 2){
+                                setTimeout(() => {
+                                alert("BOA!\nParabéns! Você acertou a palavra!");
+                            }, 100);
+                            }
+                            if(tentativaAtual === 3){
+                                setTimeout(() => {
+                                alert("Parabéns! Você acertou a palavra!");
+                            }, 100);
+                            }
+                            if(tentativaAtual === 4){
+                                setTimeout(() => {
+                                alert("QUASE!\nParabéns! Você acertou a palavra!");
+                            }, 100);
+                            }
+                            if(tentativaAtual === 5){
+                                setTimeout(() => {
+                                alert("UFA!\nParabéns! Você acertou a palavra!");
+                            }, 100);
+                            }
+                        }
+    
+                        tentativaAtual++;
+                    }
+      }
+    });
+  }
+}
+enter();
+        
+        
+        
+        
+        botoes.forEach(botao => {
+            botao.addEventListener('click', () => {
+                const letra = botao.textContent;
+    
+                if (letra === 'Apagar') {
+                    if (posicaoAtual > tentativaAtual * 5 && ganhou !== 1) {
+                        posicaoAtual--;
+                        inputs[posicaoAtual].value = '';
+                    }
+                } else if (letra === 'Enter') {
+                    if ((posicaoAtual - tentativaAtual * 5) === 5) {
+                        let tentativa = '';
+                        for (let i = 0; i < 5; i++) {
+                            const index = tentativaAtual * 5 + i;
+                            tentativa += inputs[index].value.toUpperCase();
+                        }
+    
+                        for (let i = 0; i < 5; i++) {
+                            const index = tentativaAtual * 5 + i;
+                            const letraTentativa = tentativa[i];
+                            const letraCorreta = palavra[i];
+    
+                            if (letraTentativa === letraCorreta) {
+                                inputs[index].style.backgroundColor = 'green';
+                            } else if (palavra.includes(letraTentativa)) {
+                                inputs[index].style.backgroundColor = 'orange';
+                            } else {
+                                inputs[index].style.backgroundColor = 'dimgray';
+                            }
+                        }
+    
+                        if (tentativa === palavra) {
+                            ganhou = 1;
+                            
+                            document.body.style.backgroundColor = '#72716d';
+                            if(tentativaAtual === 0){
+                                setTimeout(() => {
+                                alert("DE PRIMEIRA!\nParabéns! Você acertou a palavra!");
+                            }, 100);
+                            }
+                            if(tentativaAtual === 1){
+                                setTimeout(() => {
+                                alert("ISSO AI!\nParabéns! Você acertou a palavra!");
+                            }, 100);
+                            }
+                            if(tentativaAtual === 2){
+                                setTimeout(() => {
+                                alert("BOA!\nParabéns! Você acertou a palavra!");
+                            }, 100);
+                            }
+                            if(tentativaAtual === 3){
+                                setTimeout(() => {
+                                alert("Parabéns! Você acertou a palavra!");
+                            }, 100);
+                            }
+                            if(tentativaAtual === 4){
+                                setTimeout(() => {
+                                alert("QUASE!\nParabéns! Você acertou a palavra!");
+                            }, 100);
+                            }
+                            if(tentativaAtual === 5){
+                                setTimeout(() => {
+                                alert("UFA!\nParabéns! Você acertou a palavra!");
+                            }, 100);
+                            }
+                        }
+    
+                        tentativaAtual++;
+                    }
+                } else {
+                    if (posicaoAtual < inputs.length && (posicaoAtual - tentativaAtual * 5) < 5 && ganhou !== 1) {
+                        inputs[posicaoAtual].value = letra;
+                        posicaoAtual++;
+                    }
+                }
+            });
+        });  
+    </script>
+</body>
+</html>
